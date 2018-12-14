@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.palm.spring</groupId>
+  <artifactId>spring-boot-simple</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>spring-boot-simple</name>
+  <url>http://www.example.com</url>
+
+  <!-- Inherit defaults from Spring Boot -->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.5.9.RELEASE</version>
+    <relativePath /> <!-- lookup parent from repository1.5.9.RELEASE -->
+  </parent>
+
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <java.version>1.8</java.version>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.7</version>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>spring-boot-simple</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <!-- Spring-Loaded项目提供了强大的热部署功能 -->
+        <dependencies>
+          <!--<dependency>
+              <groupId>org.springframework</groupId>
+              <artifactId>springloaded</artifactId>
+              <version>1.2.5.RELEASE</version>
+          </dependency>-->
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+
+  <modules>
+    <module>spring-boot-simple-redis/spring-boot-simple-redis</module>
+  </modules>
+
+  <!-- Add Spring repositories -->
+  <!-- (you don't need this if you are using a .RELEASE version) -->
+  <repositories>
+    <repository>
+      <id>spring-snapshots</id>
+      <url>http://repo.spring.io/snapshot</url>
+      <snapshots><enabled>true</enabled></snapshots>
+    </repository>
+    <repository>
+      <id>spring-milestones</id>
+      <url>http://repo.spring.io/milestone</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>spring-snapshots</id>
+      <url>http://repo.spring.io/snapshot</url>
+    </pluginRepository>
+    <pluginRepository>
+      <id>spring-milestones</id>
+      <url>http://repo.spring.io/milestone</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+</project>
