@@ -49,6 +49,16 @@
     </dependency>
   </dependencies>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>1.1.39</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <build>
     <finalName>spring-boot-simple</finalName>
     <plugins>
@@ -69,6 +79,7 @@
 
   <modules>
     <module>spring-boot-simple-redis/spring-boot-simple-redis</module>
+    <module>spring-boot-simple-websocket/spring-boot-simple-mq-websocket</module>
   </modules>
 
   <!-- Add Spring repositories -->

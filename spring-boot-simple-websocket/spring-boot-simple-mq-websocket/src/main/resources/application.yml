@@ -1,0 +1,42 @@
+
+server:
+  port: 8083
+  session-timeout: 60
+  context-path: /
+
+#默认使用配置
+spring:
+  profiles:
+    active: dev
+
+#应用自定义配置-日志logback配置方法
+logging:
+  config: classpath:logback-spring.xml
+
+---
+#开发配置
+spring:
+  profiles: dev
+
+  redis:
+    database: 2
+    host: 192.168.1.130
+    password: ''
+    pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1
+        min-idle: 0
+    port: 6379
+    timeout: 0
+
+## ** 添加相关配置 **
+
+#Thymeleaf
+thymeleaf:
+  mode: LEGACYHTML5
+  prefix: classpath:/templates/
+  suffix: .html
+  template-resolver-order: 0
+  cache: false
+
