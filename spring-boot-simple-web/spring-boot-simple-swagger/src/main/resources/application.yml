@@ -1,0 +1,7 @@
+#\u8FD9\u4E2A\u4F18\u5148\u7EA7\u8F83\u4F4E
+
+server:
+  port: 8080
+  isProd: false
+
+

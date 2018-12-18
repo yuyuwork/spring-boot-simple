@@ -11,16 +11,14 @@ import java.util.concurrent.TimeUnit;
 public enum ExpireEnum {
 
     //未读消息的有效期为30天
-    UNREAD_MSG(30L, TimeUnit.DAYS)
+    UNREAD_MSG(30L, TimeUnit.DAYS),
+    //自动增长的有效期为30秒钟
+    AUTO_INCREMENT(30L,TimeUnit.SECONDS),
     ;
 
-    /**
-     * 过期时间
-     */
+    /** 过期时间 */
     private Long time;
-    /**
-     * 时间单位
-     */
+    /** 时间单位 */
     private TimeUnit timeUnit;
 
     ExpireEnum(Long time, TimeUnit timeUnit) {

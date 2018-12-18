@@ -80,7 +80,8 @@
   <modules>
     <module>spring-boot-simple-redis/spring-boot-simple-redis</module>
     <module>spring-boot-simple-websocket/spring-boot-simple-mq-websocket</module>
-      <module>spring-boot-simple-web/spring-boot-simple-mvc</module>
+    <module>spring-boot-simple-web/spring-boot-simple-mvc</module>
+    <module>spring-boot-simple-web/spring-boot-simple-swagger</module>
   </modules>
 
   <!-- Add Spring repositories -->

@@ -4,7 +4,9 @@ import org.palm.spring.boot.simple.redis.enums.ExpireEnum;
 import org.palm.spring.boot.simple.redis.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;
+import org.springframework.data.redis.support.atomic.RedisAtomicLong;
 import org.springframework.stereotype.Service;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -93,6 +95,58 @@ public class RedisServiceImpl implements RedisService {
     @Override
     public void convertAndSend(String channel, Object message) {
         redisTemplate.convertAndSend(channel, message);
+    }
+
+    @Override
+    public Long incr(String key, ExpireEnum expireEnum) {
+        RedisAtomicLong entityIdCounter = new RedisAtomicLong(key, redisTemplate.getConnectionFactory());
+        Long increment = entityIdCounter.getAndIncrement();
+
+        //初始设置过期时间
+        if ((null == increment || increment.longValue() == 0) && expireEnum.getTime() > 0) {
+            entityIdCounter.expire(expireEnum.getTime(), expireEnum.getTimeUnit());
+        }
+        return increment;
+    }
+
+    @Override
+    public void set(String key, int value, Date expireTime) {
+        RedisAtomicLong counter = new RedisAtomicLong(key, redisTemplate.getConnectionFactory());
+        counter.set(value);
+        counter.expireAt(expireTime);
+    }
+
+    @Override
+    public void set(String key, int value, long timeout, TimeUnit unit) {
+        RedisAtomicLong counter = new RedisAtomicLong(key, redisTemplate.getConnectionFactory());
+        counter.set(value);
+        counter.expire(timeout, unit);
+    }
+
+    @Override
+    public long generate(String key) {
+        RedisAtomicLong counter = new RedisAtomicLong(key, redisTemplate.getConnectionFactory());
+        return counter.incrementAndGet();
+    }
+
+    @Override
+    public long generate(String key, Date expireTime) {
+        RedisAtomicLong counter = new RedisAtomicLong(key, redisTemplate.getConnectionFactory());
+        counter.expireAt(expireTime);
+        return counter.incrementAndGet();
+    }
+
+    @Override
+    public long generate(String key, int increment) {
+        RedisAtomicLong counter = new RedisAtomicLong(key, redisTemplate.getConnectionFactory());
+        return counter.addAndGet(increment);
+    }
+
+    @Override
+    public long generate(String key, int increment, Date expireTime) {
+        RedisAtomicLong counter = new RedisAtomicLong(key, redisTemplate.getConnectionFactory());
+        counter.expireAt(expireTime);
+        return counter.addAndGet(increment);
     }
 
 }

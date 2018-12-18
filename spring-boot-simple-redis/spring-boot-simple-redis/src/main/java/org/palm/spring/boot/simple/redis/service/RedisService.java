@@ -2,6 +2,7 @@ package org.palm.spring.boot.simple.redis.service;
 
 import org.palm.spring.boot.simple.redis.enums.ExpireEnum;
 
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -15,7 +16,6 @@ public interface RedisService {
 
     /**
      * 向Redis中存储键值对
-     * @author zifangsky
      * @date 2018/7/30 17:02
      * @since 1.0.0
      * @param key KEY
@@ -25,7 +25,6 @@ public interface RedisService {
 
     /**
      * 向Redis中存储键值对，并设置过期时间
-     * @author zifangsky
      * @date 2018/7/30 17:02
      * @since 1.0.0
      * @param key KEY
@@ -37,7 +36,6 @@ public interface RedisService {
 
     /**
      * 从Redis中获取键值对
-     * @author zifangsky
      * @date 2018/7/30 17:04
      * @since 1.0.0
      * @param key KEY
@@ -47,7 +45,6 @@ public interface RedisService {
 
     /**
      * 删除Redis中的某个KEY
-     * @author zifangsky
      * @date 2018/7/30 17:10
      * @since 1.0.0
      * @param key KEY
@@ -56,7 +53,6 @@ public interface RedisService {
 
     /**
      * 将数据添加到Redis的list中（从左边添加）
-     * @author zifangsky
      * @date 2018/10/12 10:13
      * @since 1.0.0
      * @param listKey LIST的key
@@ -67,7 +63,6 @@ public interface RedisService {
 
     /**
      * 将数据添加到Redis的list中（从右边添加）
-     * @author zifangsky
      * @date 2018/10/12 10:13
      * @since 1.0.0
      * @param listKey LIST的key
@@ -78,7 +73,6 @@ public interface RedisService {
 
     /**
      * 根据起始结束序号遍历Redis中的list
-     * @author zifangsky
      * @date 2018/10/12 10:15
      * @since 1.0.0
      * @param listKey LIST的key
@@ -89,7 +83,6 @@ public interface RedisService {
 
     /**
      * 将数据添加Redis的set中
-     * @author zifangsky
      * @date 2018/10/16 19:18
      * @since 1.0.0
      * @param setKey SET的key
@@ -99,7 +92,6 @@ public interface RedisService {
 
     /**
      * 判断指定数据是否在Redis的set中
-     * @author zifangsky
      * @date 2018/10/16 19:18
      * @since 1.0.0
      * @param setKey SET的key
@@ -110,7 +102,6 @@ public interface RedisService {
 
     /**
      * 从Redis的set中移除数据
-     * @author zifangsky
      * @date 2018/10/16 19:18
      * @since 1.0.0
      * @param setKey SET的key
@@ -120,12 +111,78 @@ public interface RedisService {
 
     /**
      * 使用Redis的消息队列
-     * @author zifangsky
      * @date 2018/10/16 19:18
      * @since 1.0.0
      * @param channel topic name
      * @param message 消息内容
      */
     void convertAndSend(String channel, Object message);
+
+    /**
+     * 使用Redis实现自增
+     * @param key key值
+     * @param expireEnum 有效时间
+     * @return {Long}
+     */
+    Long incr(String key, ExpireEnum expireEnum);
+
+
+    /** =========================================== Redis生成分布式自增ID =========================================== */
+
+    /**
+     * 设置Key值到指定过期时间
+     * @param key key值
+     * @param value value值
+     * @param expireTime 最终有效期
+     */
+    void set(String key, int value, Date expireTime);
+
+    /**
+     * 设置Key值，并给定有效期
+     * @param key key值
+     * @param value value值
+     * @param timeout 超时时间
+     * @param unit TimeUnit
+     */
+    void set(String key, int value, long timeout, TimeUnit unit);
+
+    /**
+     * 根据Key生成值
+     * @param key key值
+     * @return
+     * @Title: generate
+     * @Description: Atomically increments by one the current value.
+     */
+    long generate(String key);
+
+    /**
+     * 根据Key生成值，并设置过期时间
+     * @param key key值
+     * @return
+     * @Title: generate
+     * @Description: Atomically increments by one the current value.
+     */
+    long generate(String key, Date expireTime);
+
+    /**
+     * 根据Key生成值,并增加increment
+     * @param key key值
+     * @param increment 增加的值
+     * @return
+     * @Title: generate
+     * @Description: Atomically adds the given value to the current value.
+     */
+    long generate(String key, int increment);
+
+    /**
+     * 根据Key生成值,并增加increment，并设置过期时间
+     * @param key key值
+     * @param increment 增加的值
+     * @param expireTime 过期时间
+     * @return
+     * @Title: generate
+     * @Description: Atomically adds the given value to the current value.
+     */
+    long generate(String key, int increment, Date expireTime);
 
 }

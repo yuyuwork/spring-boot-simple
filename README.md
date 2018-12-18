@@ -12,4 +12,5 @@
 
 ### spring-boot-simple-web
 ##### spring-boot-simple-mvc简单的mvc应用
+##### spring-boot-simple-swagger简单的swagger-ui应用
 
