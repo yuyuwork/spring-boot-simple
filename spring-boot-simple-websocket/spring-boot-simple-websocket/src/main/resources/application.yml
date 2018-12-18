@@ -1,0 +1,31 @@
+
+server:
+  port: 8086
+  session-timeout: 60
+  context-path: /
+
+#默认使用配置
+spring:
+  profiles:
+    active: dev
+
+#应用自定义配置-日志logback配置方法
+logging:
+  config: classpath:logback-spring.xml
+
+---
+#开发配置
+spring:
+  profiles: dev
+
+
+## ** 添加相关配置 **
+
+#Thymeleaf
+thymeleaf:
+  mode: LEGACYHTML5
+  prefix: classpath:/templates/
+  suffix: .html
+  template-resolver-order: 0
+  cache: false
+
