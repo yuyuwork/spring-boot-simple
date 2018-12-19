@@ -36,6 +36,7 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
     @Bean
     public ServerEndpointExporter serverEndpointExporter() {
+        //注意：https://www.cnblogs.com/interdrp/p/7903736.html
         return new ServerEndpointExporter();
     }
 

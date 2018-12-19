@@ -2,7 +2,7 @@
 
 ### spring-boot-simple-redis
 ##### spring-boot-simple-redis缓存的实现
-
+##### spring-boot-simple-caching-redis缓存的实现
 
 
 ### spring-boot-simple-websocket
