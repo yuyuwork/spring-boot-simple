@@ -86,6 +86,7 @@
 
     <module>spring-boot-simple-web/spring-boot-simple-mvc</module>
     <module>spring-boot-simple-web/spring-boot-simple-swagger</module>
+    <module>spring-boot-simple-redis/spring-boot-simple-ehcache</module>
   </modules>
 
   <!-- Add Spring repositories -->

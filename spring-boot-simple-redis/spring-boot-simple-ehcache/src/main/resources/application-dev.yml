@@ -1,0 +1,11 @@
+## \u5F00\u53D1\u73AF\u5883
+
+server:
+  port: 8081
+
+## \u7F13\u5B58\u914D\u7F6E-Caching-EhCache
+spring:
+  cache:
+    type: ehcache
+    ehcache:
+      config: classpath:config/ehcache.xml
