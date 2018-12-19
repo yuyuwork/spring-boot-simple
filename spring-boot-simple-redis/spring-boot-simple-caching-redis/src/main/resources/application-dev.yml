@@ -1,15 +1,15 @@
-## \u5F00\u53D1\u73AF\u5883
+## 开发环境
 server:
   port: 8081
 
-## \u7F13\u5B58\u914D\u7F6E-Caching-Redis
+## 缓存配置-Caching-Redis
 spring:
   cache:
     type: redis
     ehcache:
       config: classpath:config/ehcache.xml
 
-  ## redis\u914D\u7F6E
+  ## redis配置
   redis:
     host: 192.168.1.134
     port: 6379

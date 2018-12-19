@@ -80,13 +80,16 @@
   <modules>
     <module>spring-boot-simple-redis/spring-boot-simple-redis</module>
     <module>spring-boot-simple-redis/spring-boot-simple-caching-redis</module>
+    <module>spring-boot-simple-redis/spring-boot-simple-ehcache</module>
 
     <module>spring-boot-simple-websocket/spring-boot-simple-mq-websocket</module>
     <module>spring-boot-simple-websocket/spring-boot-simple-websocket</module>
 
     <module>spring-boot-simple-web/spring-boot-simple-mvc</module>
     <module>spring-boot-simple-web/spring-boot-simple-swagger</module>
-    <module>spring-boot-simple-redis/spring-boot-simple-ehcache</module>
+
+    <module>spring-boot-simple-integration/spring-boot-simple-mail</module>
+    <module>spring-boot-simple-integration/spring-boot-simple-activemq</module>
   </modules>
 
   <!-- Add Spring repositories -->
