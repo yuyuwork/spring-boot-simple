@@ -19,7 +19,7 @@
     </properties>
 
     <dependencies>
-        <!-- redis(https://www.cnblogs.com/sxdcgaq8080/p/8119081.html) -->
+        <!-- SpringBoot Redis依赖包 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
