@@ -1,0 +1,28 @@
+## 开发环境
+server:
+  port: 8087
+
+## Mail配置参数
+spring:
+  mail:
+    ## QQ邮件服务地址smtp.qq.com
+    host: smtp.163.com
+    ## 端口，这里添加587即可
+    ## port: 465
+    ## 发送方的邮箱
+    username: 2441553401@qq.com
+    ## 对于qq邮箱而言 密码指的就是发送方的授权码
+    password:
+    ## 默认编码UTF-8
+    default-encoding: UTF-8
+    ## protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ## ssl:
+            ## enable: true
+        debug: true
+        starttls:
+          enable: true
+          required: true

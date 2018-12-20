@@ -8,7 +8,9 @@ spring:
   ## Redis配置参数
   redis:
     database: 2
+    ## 192.168.1.134
     host: 192.168.1.130
+    ## redis服务器密码，默认是没有的
     password: ''
     pool:
       max-active: 8
